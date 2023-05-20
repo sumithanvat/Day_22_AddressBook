@@ -18,6 +18,10 @@ public class ContactPerson {
         this.email = email;
     }
 
+    public ContactPerson() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
