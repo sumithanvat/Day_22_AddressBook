@@ -101,8 +101,8 @@ public class AddressBookMain {
                 List<ContactPerson> cityList = new ArrayList<>();
                 addressBookMap.values().stream().forEach(addressBook -> cityList.addAll(addressBook.getContacts().stream().filter(
                         contact -> contact.getCity().equalsIgnoreCase(cityName)).toList()));
-                int count1 = cityList.size();
-                System.out.println(count1 + "Contact Found, which belongs to" + cityName +" city");
+                int countByCity = cityList.size();
+                System.out.println(countByCity + "Contact Found in " + cityName +" city");
                 System.out.println(cityList);
                 System.out.println();
                 break;
@@ -112,8 +112,8 @@ public class AddressBookMain {
                 List<ContactPerson> stateList = new ArrayList<>();
                 addressBookMap.values().stream().forEach(addressBook -> stateList.addAll(addressBook.getContacts().stream().filter(
                         contact -> contact.getState().equalsIgnoreCase(stateName)).toList()));
-                int count2 = stateList.size();
-                System.out.println(count2 + "Contacts Found, which belongs to" + stateName +" city");
+                int countByState = stateList.size();
+                System.out.println(countByState + "Contacts Found in " + stateName +" State");
                 System.out.println(stateList);
                 System.out.println();
                 break;
@@ -123,7 +123,6 @@ public class AddressBookMain {
                 break;
         }
     }
-
     public static void displayAddressBook(){
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the name of the address book you want to Display:");
@@ -180,4 +179,4 @@ public class AddressBookMain {
             }
         }
     }
-    }
+}
