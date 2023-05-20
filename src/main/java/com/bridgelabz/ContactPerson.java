@@ -99,4 +99,12 @@ public class ContactPerson {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public void setName(String nextLine) {
+    }
+
+    public String getName() {
+    this.firstName=firstName;
+        return getName();
+    }
 }
