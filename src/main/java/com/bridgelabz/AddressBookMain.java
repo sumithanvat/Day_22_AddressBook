@@ -1,8 +1,6 @@
 package com.bridgelabz;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBookMain {
 
@@ -89,6 +87,42 @@ public class AddressBookMain {
             System.out.println("Given Address Book not Found\n");
     }
 
+    public static void searchContact(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("1. search all Contacts from a specific City");
+        System.out.println("2. search all Contacts from a specific State");
+        int choice = in.nextInt();
+
+        switch (choice){
+            case 1:
+                System.out.print("Enter name of the City: ");
+                String cityName = in.next();
+                List<ContactPerson> cityList = new ArrayList<>();
+                addressBookMap.values().stream().forEach(addressBook -> cityList.addAll(addressBook.getContacts().stream().filter(
+                        contact -> contact.getCity().equalsIgnoreCase(cityName)).toList()));
+                int count1 = cityList.size();
+                System.out.println(count1 + "Contact Found, which belongs to" + cityName +" city");
+                System.out.println(cityList);
+                System.out.println();
+                break;
+            case 2:
+                System.out.print("Enter name of the State: ");
+                String stateName = in.next();
+                List<ContactPerson> stateList = new ArrayList<>();
+                addressBookMap.values().stream().forEach(addressBook -> stateList.addAll(addressBook.getContacts().stream().filter(
+                        contact -> contact.getState().equalsIgnoreCase(stateName)).toList()));
+                int count2 = stateList.size();
+                System.out.println(count2 + "Contacts Found, which belongs to" + stateName +" city");
+                System.out.println(stateList);
+                System.out.println();
+                break;
+            default:
+                System.out.println("Please Choose valid option");
+                searchContact();
+                break;
+        }
+    }
+
     public static void displayAddressBook(){
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the name of the address book you want to Display:");
@@ -111,9 +145,10 @@ public class AddressBookMain {
             System.out.println("2. Add Contact");
             System.out.println("3. Edit Contact");
             System.out.println("4. Delete Contact");
-            System.out.println("5. Display Dictionary of Address Books");
-            System.out.println("6. Display Address Books Of Contacts");
-            System.out.println("7. Exit");
+            System.out.println("5. Search Contacts from a specific City or specific State");
+            System.out.println("6. Display Dictionary of Address Books");
+            System.out.println("7. Display Address Books Contacts");
+            System.out.println("8. Exit");
             int choice = in.nextInt();
 
             switch (choice) {
@@ -131,14 +166,16 @@ public class AddressBookMain {
                     deleteContact();
                     break;
                 case 5:
-
+                    searchContact();
                     break;
                 case 6:
+                    System.out.println(addressBookMap);
+                    break;
+                case 7:
                     displayAddressBook();
                     break;
                 default:
                     status=false;
-                    break;
             }
         }
     }
