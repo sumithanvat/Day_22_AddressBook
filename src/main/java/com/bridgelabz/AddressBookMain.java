@@ -1,10 +1,9 @@
 package com.bridgelabz;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookMain {
-
-
 
     public static Map<String,AddressBook> addressBookMap= new HashMap<>();
 
@@ -134,6 +133,21 @@ public class AddressBookMain {
         else
             System.out.println("Given Address Book not Found\n");
     }
+
+    public static void displaySortedAddressBook() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter name of address book you want to Display:");
+        String name = in.next();
+        if (addressBookMap.containsKey(name)) {
+            AddressBook Temp = addressBookMap.get(name);
+            List<ContactPerson> sortedList = Temp.getContacts().stream().sorted(Comparator.comparing(ContactPerson::getFirstName)).collect(Collectors.toList());
+            System.out.println("The Sorted Contacts: ");
+            System.out.println(sortedList);
+            System.out.println();
+        } else
+            System.out.println("Given Address Book not Found");
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
 
@@ -148,7 +162,8 @@ public class AddressBookMain {
             System.out.println("5. Search Contacts from a specific City or specific State");
             System.out.println("6. Display Dictionary of Address Books");
             System.out.println("7. Display Address Books Contacts");
-            System.out.println("8. Exit");
+            System.out.println("8. Display Contacts in Sorted Order based on person's name");
+            System.out.println("9. exit");
             int choice = in.nextInt();
 
             switch (choice) {
@@ -174,9 +189,13 @@ public class AddressBookMain {
                 case 7:
                     displayAddressBook();
                     break;
+                case 8:
+                    displaySortedAddressBook();
+                    break;
                 default:
                     status=false;
             }
         }
     }
 }
+
