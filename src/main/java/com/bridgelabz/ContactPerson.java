@@ -4,46 +4,26 @@ package com.bridgelabz;
 * Created Class
  */
 public class ContactPerson {
-// initialize variables
-private String firstName;
-    private String lastName;
-    private String address;
+    private String name;
     private String city;
     private String state;
     private String zip;
-    private String phoneNumber;
-    private String email;
 
-    public String getFirstName() {
-        return firstName;
+    public ContactPerson(String name, String city, String state, String zip) {
+        this.name = name;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    // Getters and setters
+
+    public String getName() {
+        return name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCity() {
@@ -70,25 +50,13 @@ private String firstName;
         this.zip = zip;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public String toString() {
-        return "Contact{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
+        return "Person{" +
+                "name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
                 '}';
     }
 }
